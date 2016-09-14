@@ -22,6 +22,7 @@ nextColumn:
         numberOfSolutions++; //to keep track of the number of solutions found
         cout << endl;
     }
+    
 nextRow:
     row++;
     if (row == 8) goto backtrack;

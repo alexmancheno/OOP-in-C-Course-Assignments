@@ -7,13 +7,14 @@ using namespace std;
 
 bool valid(int q[], int c) {
     //this for-loop contains the row, upper-diagonal, and lower-diagonal test:
-    for (int i = 0; i < c; i++) {
+    for (int i = 0; i < c; i++)
         if (q[c] == q[i] || c - i == abs(q[c] - q[i])) return false;
-    }
     return true;
 }
 
-void print(int q[]) {
+void print(int q[], int &s) {
+    s++;
+    cout << "Solution " << s << ":" << endl;
     cout << "--------------------------------" << endl;
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -30,21 +31,22 @@ void print(int q[]) {
     return;
 }
 
-void eightQueens(int q[], int c) {
-    print(q);
+void eightQueens(int q[], int c, int s) {
     q[c]++;
-    if (c == 8) print(q);
-    if (c == -1) //terminate program
-    if (q[c] == 8) eightQueens(q, c - 1);
-    if (valid(q, c)) {
-        
-        eightQueens(q, c + 1);
+    if (c == -1) {
+        cout << "All solutions have been found.";
+        return;
     }
+    if (q[c] == 8) return eightQueens(q, --c, s);
+    if (valid(q, c) == false) return eightQueens(q, c, s);
+    c++;
+    if (c == 8) print(q, s);
+    q[c] = -1;
+    return eightQueens(q, c, s);
 }
 
 int main() {
-    int q[8], c = 1, i, numberOfSolutions = 0;
-    q[0] = 0;    
-    eightQueens(q, c);
-
-}
+    int q[8] = {-1}, c = 0, numberOfSolutions = 0;
+    eightQueens(q, c, numberOfSolutions);
+    return 0;
+} 
