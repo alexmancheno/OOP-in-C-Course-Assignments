@@ -5,6 +5,7 @@
 #include <cmath>
 using namespace std;
 
+//checks if the queen can be placed on current row/column:
 bool valid(int q[], int c) {
     //this for-loop contains the row, upper-diagonal, and lower-diagonal test:
     for (int i = 0; i < c; i++)
@@ -12,35 +13,39 @@ bool valid(int q[], int c) {
     return true;
 }
 
+//prints array:
 void print(int q[], int &s) {
     s++;
     cout << "Solution " << s << ":" << endl;
     cout << "--------------------------------" << endl;
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            if (q[i] == j) {
-                cout << " Q |";
-            } else {
-                cout << "   |";
-            }
+            if (q[i] == j) cout << " Q |";
+            else           cout << "   |";
         }
         cout << endl;
         cout << "--------------------------------" << endl;
     }
     cout << endl;
-    return;
 }
 
+//recursive function to find all the solutions for 8-queens:
 void eightQueens(int q[], int c, int s) {
+    //increment row:
     q[c]++;
+    //to stop program once all solutions have been found:
     if (c == -1) {
         cout << "All solutions have been found.";
         return;
     }
+    //backtrack if queen cannot be placed on current column:
     if (q[c] == 8) return eightQueens(q, --c, s);
-    if (valid(q, c) == false) return eightQueens(q, c, s);
+    //go to next row if queen cannot be placed on current row/column:
+    if (!valid(q, c)) return eightQueens(q, c, s);
     c++;
+    //if 8 queens are placed, we print:
     if (c == 8) print(q, s);
+    //we reset row before we begin backtracking in the next recursive call:
     q[c] = -1;
     return eightQueens(q, c, s);
 }
