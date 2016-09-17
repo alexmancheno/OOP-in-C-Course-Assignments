@@ -44,7 +44,10 @@ void eightQueens(int q[], int c, int s) {
     if (!valid(q, c)) return eightQueens(q, c, s);
     c++;
     //if 8 queens are placed, we print:
-    if (c == 8) print(q, s);
+    if (c == 8) {
+        print(q, s);
+        return eightQueens(q, --c, s);
+    }
     //we reset row before we begin backtracking in the next recursive call:
     q[c] = -1;
     return eightQueens(q, c, s);

@@ -12,7 +12,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Hw6.cpp</itemPath>
+      <itemPath>Hw8.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -36,7 +36,7 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Hw6.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Hw8.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -59,7 +59,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Hw6.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Hw8.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
