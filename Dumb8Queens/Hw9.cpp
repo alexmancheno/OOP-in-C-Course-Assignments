@@ -31,12 +31,14 @@ bool ok(int q[][8]) {
 }
 
 void print(int q[][8], int solution) {
-    cout << "Solution " << solution << ":" << endl; 
+    cout << "Solution " << solution << ":" << endl;
+    cout << "---------------------------------" << endl;
     for (int r = 0; r < 8; r++) {
-        for (int c = 0; c < 8; c++) {
-            cout << q[r][c] << ' ';
-        }
-        cout << endl;
+        cout << "|";
+        for (int c = 0; c < 8; c++)
+            if (q[r][c]) cout << " Q |";
+            else         cout << "   |";                
+        cout << endl <<"---------------------------------" << endl;        
     }
     cout << endl;
 }
@@ -80,4 +82,3 @@ int main() {
     cout << "All solutions have been found." << endl;
     return 0;
 }
-
