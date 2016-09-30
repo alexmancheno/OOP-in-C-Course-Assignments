@@ -73,19 +73,13 @@ void makeTileSet(box bb, box wb, box &bq, box &wq) {
 void fillArray(int board[8], box *boardPrint[][8], box *bB, box *wB, box *bQ, box *wQ) {
     //to fill board with black/white boxes:
     for(int i=0;i<8;i++)
-    {
         for(int j=0;j<8;j++)
-        {
-            if((i+j)%2==0)
-            {
+            if((i+j)%2==0)                
                 if(board[i]== j) boardPrint[i][j]=wQ;
                 else boardPrint[i][j]=wB;
-            }else {
-                if(board[i]== j) boardPrint[i][j]=bQ;
-                else boardPrint[i][j]=bB;
-            }
-        }
-    }
+                else 
+            if(board[i]== j) boardPrint[i][j]=bQ;
+                else boardPrint[i][j]=bB;    
 }
 
 int main() {
