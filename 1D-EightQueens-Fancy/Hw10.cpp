@@ -41,14 +41,13 @@ void print(box *q[][8], int s) {
     //now we reset the board after we are finished printing:
 }
 
-void makeTileSet(box bb, box wb, box &bq, box &wq) {
+void makeTileSet(box bb, box wb, box bq, box wq) {
     //to make empty black and white boxes:
     for (int r = 0; r < 5; r++) {
         for (int c = 0; c < 7; c++) {
             wb[r][c] = ' ';
             bb[r][c] = char(219);
         }
-        // cout << endl;
     }
 
     //to shape the queen:
@@ -63,9 +62,9 @@ void makeTileSet(box bb, box wb, box &bq, box &wq) {
     for (int r = 0; r < 5; r++) {
         for (int c = 0; c < 7; c++) {
             if (queen[r][c] == 1) bq[r][c] = ' ';
-            else bq[r][c] = char(219);
+            else                  bq[r][c] = char(219);
             if (queen[r][c] == 1) wq[r][c] = char(219);
-            else wq[r][c] = ' ';
+            else                  wq[r][c] = ' ';
         }
     }
 }
@@ -75,11 +74,11 @@ void fillArray(int board[8], box *boardPrint[][8], box *bB, box *wB, box *bQ, bo
     for(int i=0;i<8;i++)
         for(int j=0;j<8;j++)
             if((i+j)%2==0)                
-                if(board[i]== j) boardPrint[i][j]=wQ;
-                else boardPrint[i][j]=wB;
+                if(board[i]== j) boardPrint[i][j] = wQ;
+                else             boardPrint[i][j] = wB;
             else 
-                if(board[i]== j) boardPrint[i][j]=bQ;
-                else boardPrint[i][j]=bB;
+                if(board[i]== j) boardPrint[i][j] = bQ;
+                else             boardPrint[i][j] = bB;
 }
 
 int main() {
@@ -92,7 +91,7 @@ int main() {
     //the 'fillArray' function gets called when we find a solution
     //and the 'print' function prints the array of pointers instead
     //of the array with the solution:
-    while (true) {
+    /*while (true) {
         q[c]++;
         if (c == -1) {
             cout << "All solutions have been found." << endl;
@@ -110,8 +109,8 @@ int main() {
             c++;
             q[c] = -1;
         }
-        //fillArray(q, board, bb, wb, bq, wq);
-        //print(board, numberOfSolutions);
-    }
+    }*/
+    fillArray(q, board, &bb, &wb, &bq, &wq);
+    print(board, numberOfSolutions);
     return 0;
 }
