@@ -2,7 +2,20 @@
 //CSCI 211 - Section 52B
 //Hw # 10 - 1D 8Queen: Fancy Print
 
+/*Hi Changlin, 
+    I was just with you at your office (Thursday between 4:30-6:15pm) and 
+    you said to leave a comment about the way this code prints on the Venus
+    server is acceptable, though it compiles/prints perfectly on Netbeans 
+    (my compiler). And if you happen to find why exactly it prints the way
+    it does as of now on the Venus server, please let me know! I'm definitely
+    curious why it prints this way.
+ 
+    So the way it prints is that the white boxes print fine, but the black
+    boxes/queens mess up when they print. This doesn't occur on Netbeans, 
+    and prints perfectly on there.*/
+
 #include<iostream>
+#include<cstdlib>
 using namespace std;
 
 //declaring 'box' here so the functions can use this datatype without problems:
@@ -16,11 +29,11 @@ bool valid(int q[], int c) {
 }
 
 void print(box *q[][8], int s) {
-    cout << "Solution " << s << ":" << endl;
+    cout << "Solution " << s << ":" << endl << " ";
     //print the board via the pointers in array board
     //first print upper border
-    for (int i = 0; i < 7 * 8; i++)
-        cout << '_';
+    for (int i = 0; i < 7 * 8 + 2; i++)
+        cout << char(196);
     cout << endl;
     //now print the board
     for (int i = 0; i < 8; i++)
@@ -33,19 +46,21 @@ void print(box *q[][8], int s) {
         }
     //before exiting print lower border
     cout << " ";
-    for (int i = 0; i < 7 * 8; i++)
-        cout << char(196);
+    for (int i = 0; i < 7 * 8 + 2; i++)
+        cout << char(219);
     cout << endl << endl;
+
+    //now we reset the board after we are finished printing:
 }
 
 void makeTileSet(box bb, box wb, box &bq, box &wq) {
     //to make empty black and white boxes:
     for (int r = 0; r < 5; r++) {
         for (int c = 0; c < 7; c++) {
-            wb[r][c] = char(32);
+            wb[r][c] = ' ';
             bb[r][c] = char(219);
         }
-        cout << endl;
+        // cout << endl;
     }
 
     //to shape the queen:
@@ -59,32 +74,30 @@ void makeTileSet(box bb, box wb, box &bq, box &wq) {
     //to create boxes with queens:
     for (int r = 0; r < 5; r++) {
         for (int c = 0; c < 7; c++) {
-            if (queen[r][c] == 1) bq[r][c] = char(32);
-            else                  bq[r][c] = char(219);
+            if (queen[r][c] == 1) bq[r][c] = ' ';
+            else bq[r][c] = char(219);
             if (queen[r][c] == 1) wq[r][c] = char(219);
-            else                  wq[r][c] = char(32);
+            else wq[r][c] = ' ';
         }
     }
 }
 
-void fillArray(int q[], box *board[][8], box &bb, box &wb, box &bq, box &wq) {
+void fillArray(int board[8], box *boardPrint[][8], box *bB, box *wB, box *bQ, box *wQ) {
     //to fill board with black/white boxes:
-    for (int r = 0; r < 8; r++) {
-        for (int c = 0; c < 8; c++) 
-            if ((r + c) % 2 == 0)
-                board[r][c] = &wb;
-            else 
-                board[r][c] = &bb;
+    for(int i=0;i<8;i++)
+    {
+        for(int j=0;j<8;j++)
+        {
+            if((i+j)%2==0)
+            {
+                if(board[i]== j) boardPrint[i][j]=wQ;
+                else boardPrint[i][j]=wB;
+            }else {
+                if(board[i]== j) boardPrint[i][j]=bQ;
+                else boardPrint[i][j]=bB;
+            }
+        }
     }
-    //to place queens on board depending on the current solution found:
-    for (int r = 0; r < 8; r++) {
-        for (int c = 0; c < 8; c++)
-            if ((q[c] == r) && board[r][c] == &wb)
-                board[r][c] = &wq;
-            else if ((q[c] == r) && board[r][c] == &bb)
-                board[r][c] = &bq;
-    }
-     
 }
 
 int main() {
@@ -103,7 +116,7 @@ int main() {
             cout << "All solutions have been found." << endl;
             return 0;
         } else if (c == 8) {
-            fillArray(q, board, bb, wb, bq, wq);
+            fillArray(q, board, &bb, &wb, &bq, &wq);
             numberOfSolutions++;
             print(board, numberOfSolutions);
             q[c] = -1;
@@ -115,6 +128,8 @@ int main() {
             c++;
             q[c] = -1;
         }
+        //fillArray(q, board, bb, wb, bq, wq);
+        //print(board, numberOfSolutions);
     }
     return 0;
 }
