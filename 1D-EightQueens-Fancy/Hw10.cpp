@@ -2,18 +2,6 @@
 //CSCI 211 - Section 52B
 //Hw # 10 - 1D 8Queen: Fancy Print
 
-/*Hi Changlin, 
-    I was just with you at your office (Thursday between 4:30-6:15pm) and 
-    you said to leave a comment about the way this code prints on the Venus
-    server is acceptable, though it compiles/prints perfectly on Netbeans 
-    (my compiler). And if you happen to find why exactly it prints the way
-    it does as of now on the Venus server, please let me know! I'm definitely
-    curious why it prints this way.
- 
-    So the way it prints is that the white boxes print fine, but the black
-    boxes/queens mess up when they print. This doesn't occur on Netbeans, 
-    and prints perfectly on there.*/
-
 #include<iostream>
 #include<cstdlib>
 using namespace std;
