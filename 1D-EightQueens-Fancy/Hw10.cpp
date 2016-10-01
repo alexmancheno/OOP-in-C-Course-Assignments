@@ -91,7 +91,7 @@ int main() {
     //the 'fillArray' function gets called when we find a solution
     //and the 'print' function prints the array of pointers instead
     //of the array with the solution:
-    /*while (true) {
+    while (true) {
         q[c]++;
         if (c == -1) {
             cout << "All solutions have been found." << endl;
@@ -109,8 +109,8 @@ int main() {
             c++;
             q[c] = -1;
         }
-    }*/
-    fillArray(q, board, &bb, &wb, &bq, &wq);
-    print(board, numberOfSolutions);
+    }
+    //fillArray(q, board, &bb, &wb, &bq, &wq);
+    //print(board, numberOfSolutions);
     return 0;
 }
