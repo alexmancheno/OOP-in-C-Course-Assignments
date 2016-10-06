@@ -22,17 +22,14 @@ bool valid(int q[], int c) {
     for (int i = 0; i < c; i++) {
         //if new woman is already assigned to a man:
         if (q[c] == q[i]) {
-            cout << "condition 1 fails." << endl;
             return false;
         } //if the current man prefers the new woman to his partner and
           //if the new woman prefers the current man to her partner:
         else if (mp[i][q[i]] < mp[i][q[c]] && wp[q[c]][c] < wp[q[c]][i]) {
-            cout << "condition 2a or 2b fails." << endl;
             return false;
         } //if the new man prefers the current woman to his partner and
           //if the current woman prefers the new man to her partner:
         else if (mp[c][q[i]] < mp[c][q[c]] && wp[q[c]][c] > wp[q[c]][i]) {
-            cout << "condition 2b or 2c fails." << endl;
             return false;
         }
     }
@@ -45,6 +42,7 @@ void print(int q[], int numberOfSolutions) {
     for (int i = 0; i < 3; i++) {
         cout << i << "     " << q[i] << endl;
     }
+    cout << endl;
 }
 
 int main() {
@@ -58,7 +56,6 @@ int main() {
      * man is matched:  */
     while (true) {
         q[c]++;
-        //print(q, numberOfSolutions);
         if (c == -1) {
             cout << "All solutions found." << endl;
             return 0;
