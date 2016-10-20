@@ -25,11 +25,11 @@ bool valid(int q[], int c) {
             return false;
         } //if the current man prefers the new woman to his partner and
           //if the new woman prefers the current man to her partner:
-        else if (mp[i][q[i]] < mp[i][q[c]] && wp[q[c]][c] < wp[q[c]][i]) {
+        else if (mp[i][q[c]] < mp[i][q[i]] && wp[q[c]][i] < wp[q[c]][c]) {
             return false;
         } //if the new man prefers the current woman to his partner and
           //if the current woman prefers the new man to her partner:
-        else if (mp[c][q[i]] < mp[c][q[c]] && wp[q[c]][c] > wp[q[c]][i]) {
+        else if (mp[c][q[i]] < mp[c][q[c]] && wp[q[i]][c] < wp[q[i]][i]) {
             return false;
         }
     }

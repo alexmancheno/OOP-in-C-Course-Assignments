@@ -24,11 +24,11 @@ void print(box *q[][8], int s) {
         cout << char(196);
     cout << endl;
     //now print the board
-    for (int i = 0; i < 8; i++)
-        for (int k = 0; k < 5; k++) {
+    for (int i = 0; i < 8; i++) //for each board row
+        for (int k = 0; k < 5; k++) { // for each box row
             cout << " " << char(219); //print left border
-            for (int j = 0; j < 8; j++)
-                for (int l = 0; l < 7; l++)
+            for (int j = 0; j < 8; j++) //for each board column 
+                for (int l = 0; l < 7; l++) //for each box column
                     cout << (*q[i][j])[k][l];
             cout << char(219) << endl;
         }
@@ -71,14 +71,14 @@ void makeTileSet(box bb, box wb, box bq, box wq) {
 
 void fillArray(int board[8], box *boardPrint[][8], box *bB, box *wB, box *bQ, box *wQ) {
     //to fill board with black/white boxes:
-    for(int i=0;i<8;i++)
-        for(int j=0;j<8;j++)
-            if((i+j)%2==0)                
-                if(board[i]== j) boardPrint[i][j] = wQ;
-                else             boardPrint[i][j] = wB;
+    for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+            if ((i + j) % 2 == 0)                
+                if (board[i]== j) boardPrint[i][j] = wQ;
+                else              boardPrint[i][j] = wB;
             else 
-                if(board[i]== j) boardPrint[i][j] = bQ;
-                else             boardPrint[i][j] = bB;
+                if (board[i]== j) boardPrint[i][j] = bQ;
+                else              boardPrint[i][j] = bB;
 }
 
 int main() {
