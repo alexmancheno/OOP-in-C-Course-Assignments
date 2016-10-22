@@ -37,7 +37,7 @@ int main() {
                 students.push_back(studentsHeight);
             }
             
-            //to get last height number from current class without problems:
+            //to get last height number from current class:
             getline(myFile, line, '\n');
             istringstream iss(line);
             iss >> studentsHeight;
@@ -48,15 +48,19 @@ int main() {
                 cout << students[j] << " ";
             cout << endl;
 
-            //sort:
-            for (j = 0; j < 20; j++) {
-                if (students[j] < students[0]) {
-                    int temp = students[j];
-                    students.erase(students.begin() + j);
-                    students.insert(students.begin(), temp);
-                    stepsTaken += j;
+            for (int r = 0; r < 20; r++) {
+                int position = 0;
+                for (int t = 0; t < i; t++) {
+                   if (students[r] < students[t]) {
+                       int temp = students[r];
+                       students.erase(students.begin() + r);
+                       students.insert(students.begin() + t, temp);
+                       position = r;
+                   }
                 }
+                stepsTaken += position;
             }
+           
                      
             cout << i + 1 << " (after sort):  ";
             for (j = 0; j < 20; j++)
