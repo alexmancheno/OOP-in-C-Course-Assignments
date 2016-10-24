@@ -24,7 +24,7 @@ int main() {
         iss >> numOfClasses;
         cout << numOfClasses << endl;
 
-        int i, j, k;
+        int i, j;
         
         //to get heights from current class:
         for (i = 0; i < numOfClasses; i++) {
@@ -42,32 +42,23 @@ int main() {
             istringstream iss(line);
             iss >> studentsHeight;
             students.push_back(studentsHeight);
-            
-            cout << " (before sort): ";
-            for (j = 0; j < 20; j++)
-                cout << students[j] << " ";
-            cout << endl;
 
+            //to sort and get number of steps taken:
             for (int r = 0; r < 20; r++) {
-                int position = 0;
-                for (int t = 0; t < i; t++) {
+                int newPosition = 0, OldPosition = 0;
+                for (int t = 0; t < r; t++) {
                    if (students[r] < students[t]) {
                        int temp = students[r];
                        students.erase(students.begin() + r);
                        students.insert(students.begin() + t, temp);
-                       position = r;
+                       newPosition = t;
+                       OldPosition = r;
                    }
                 }
-                stepsTaken += position;
+                stepsTaken += OldPosition - newPosition;
             }
-           
-                     
-            cout << i + 1 << " (after sort):  ";
-            for (j = 0; j < 20; j++)
-                cout << students[j] << " ";
-            cout << endl;
 
-            cout << "number of steps taken: " << stepsTaken << endl;
+            cout << " "  << stepsTaken << endl;
             cout << endl;
             students.clear();
             stepsTaken = 0;
