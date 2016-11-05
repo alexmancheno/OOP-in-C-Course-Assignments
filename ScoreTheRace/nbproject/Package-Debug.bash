@@ -13,8 +13,8 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dylib
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/score_the_race
-OUTPUT_BASENAME=score_the_race
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/scoretherace
+OUTPUT_BASENAME=scoretherace
 PACKAGE_TOP_DIR=scoretherace/
 
 # Functions

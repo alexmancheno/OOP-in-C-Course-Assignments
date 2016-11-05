@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Score The Race
+PROJECTNAME=ScoreTheRace
 
 # Active Configuration
 DEFAULTCONF=Debug

@@ -9,15 +9,26 @@ int fib(int n) {
 }
 
 int fib2(int n) {
-    static int memo[100] = {0};
-    for (int i = 1; i <= n; i++) {
-        memo[i]
+    int first = 0, second = 1, next;
+    
+    int* name = new int[second];
+    for (int i = 0; i <= n; i++) {
+        if (i <= 1) {
+            next = i;
+        }
+        else {
+            next = first + second;
+            first = second;
+            second = next;
+        } 
     }
+    delete[] name;
+    return next;
 }
 
 int main() {
     
-    cout << fib(50) << endl;
+    cout << fib2(19) << endl;
     return 0;
 }
 

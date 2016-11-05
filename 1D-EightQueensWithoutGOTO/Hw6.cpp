@@ -17,14 +17,8 @@ bool valid(int q[], int c) {
 void print(int q[], int &s) {
     s++;
     cout << "Solution " << s << ":" << endl;
-    cout << "--------------------------------" << endl;
     for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            if (q[i] == j) cout << " Q |";
-            else           cout << "   |";
-        }
-        cout << endl;
-        cout << "--------------------------------" << endl;
+        cout << q[i] << " ";
     }
     cout << endl;
 }
