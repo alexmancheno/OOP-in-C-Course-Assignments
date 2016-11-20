@@ -17,25 +17,45 @@ bool valid(int *q, int c, int n) {
     return true;
 }
 
+void backtrack(int *q, int& c, int n) {
+    q[c] = 0;
+    
+    //to look for the previously placed bishop:
+    for (c -= n; q[c] == 0; c -= n) 
+        if (c < 0) {
+            c += (n * n - 1);
+        
+    }
+}
+
 int numberOfSolutions(int n, int k) {
     int *q = new int[n * n];
-    int totalSolutions = 0, c = 0, bishopsPlaced = 0, rowCounter = 0;
-    
+    int totalSolutions = 0, c = 0, bishopsPlaced = 1;
+    //q[0] = 1;    
     c -= n;
     
-    while (c <= (n * n * n - n) && bishopsPlaced != 0) {
+    while (c < n * n && bishopsPlaced != 0) {
         c += n;
-        rowCounter++;
         
-        if (rowCounter == n) {
-            c -= n * n;
-            c++;
-            rowCounter -= n;
+        if (c > n * n) {
+            c -= n * n + 1;
+            cout << "1" << endl;
         }
-        if (valid(q, c, n)) {
+        
+        if (valid(q, c, n) && k - bishopsPlaced > 0) {
+            cout << "2" << endl;
             q[c] == 1;
+            bishopsPlaced++;
+        }
+        
+        if (bishopsPlaced == k) {
+            cout << "3" << endl;
+            totalSolutions++;
+            backtrack(q, c, n);
+            bishopsPlaced--;
         }
     }
+    return totalSolutions;
 }
 
 int main() {
@@ -44,15 +64,17 @@ int main() {
     cout << "Enter a board size: ";
     cin >> n;
     cout << "Enter a number of bishops less than the board size: ";
-    cout >> k;
+    cin >> k;
+    
     while (n != -1) {
         if (k > n) {
-            cout << "Number of bishops is larger than board size. Try again: ";
-            cin >> n >> k;
+            cout << "Number of bishops is larger than board size. Try again: ";            
         } else {
-            cout << "Board of size " << n << " with " << k << " bishops has " << numberOfSolutions(n, k) << " solutions.";
+            cout << "Board of size " << n << " with " << k << " bishops has " << numberOfSolutions(n, k) << " solutions." << endl;
         }
-    }
-       
+            cout << "Enter numbers again: ";
+    cin >> n;
+    cin >> k;
+    }      
     return 0;
 }
