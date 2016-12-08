@@ -6,7 +6,7 @@
 #include <sstream>
 using namespace std;
 
-const int row = 4, col = 5;
+const int row = 100, col = 101;
 int inputArray[row][col], cost[row][col] = {0};
 
 void readFromFile() {
@@ -40,7 +40,7 @@ int calculateCost(int r, int c) {
     int leftSide = calculateCost(r - 1, c - 1) + inputArray[r][c];
     
     cost[r][c] = max(rightSide, leftSide);
-    return max(rightSide, leftSide);
+    return cost[r][c];
 }
 
 void print(int a[][col]) {
@@ -67,7 +67,16 @@ int main() {
     
     print(inputArray);
     
-    cout << calculateCost(row - 1, col - 1);
+    int lastRow[col] = {0};
+    
+    for (int i = 0; i < col; i++) {
+        lastRow[i] = calculateCost(row - 1, i);
+    }
+    int max = lastRow[0];
+    for (int i = 1; i < col; i++) {
+        if (lastRow[i] > max) max = lastRow[i];
+    }
+    cout << max << endl;
     return 0;
 }
 
